@@ -1,0 +1,90 @@
+#root {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  box-sizing: border-box;
+  background-image: url(./img/bg-img.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #2b2b5d;
+  padding: 50px;
+  border-radius: 12px;
+  width: 300px;
+  height: 400px;
+}
+.temperature {
+  color: white;
+  font-size: 50px;
+  font-weight: 700;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  padding: 70px;
+  min-width: 75px;
+  margin-bottom: 40px;
+}
+.control-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  width: 100%;
+}
+.controller {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: rgb(244, 169, 7);
+  color: #fff;
+  text-align: center;
+  font-weight: 900;
+  border: 2px solid #fff;
+  font-size: 32px;
+  cursor: pointer;
+  padding: 20px;
+  min-width: 80px;
+}
+.controller:hover {
+  transition: background-color 0.7s ease-in-out;
+  background-color: rgb(57, 53, 53);
+}
+.reset {
+  font-weight: 700;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: rgb(251, 28, 28);
+}
+
+.temperature-mode {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+.temperature-mode > button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  color: white;
+  padding: 10px;
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+}
