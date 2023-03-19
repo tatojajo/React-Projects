@@ -35,7 +35,7 @@ function UserCard({
 
   return editData ? (
     <div className="each__user">
-      <div className="user__header">
+      <>
         <label htmlFor="image">Image</label>
         <input
           value={editUser.image}
@@ -47,11 +47,12 @@ function UserCard({
             handleEnteredValue(e.target);
           }}
         />
-      </div>
-      <div className="user__body">
+
         <p>
           <strong>
-            <label htmlFor="first__name">First Name</label>
+            <label htmlFor="first__name">
+              First Name <span style={{ color: "red" }}>*</span>
+            </label>
             <input
               value={editUser.firstName}
               name="firstName"
@@ -64,7 +65,9 @@ function UserCard({
             />
           </strong>
           <strong>
-            <label htmlFor="last__name">Last Name</label>
+            <label htmlFor="last__name">
+              Last Name <span style={{ color: "red" }}>*</span>
+            </label>
             <input
               value={editUser.lastName}
               name="lastName"
@@ -91,7 +94,11 @@ function UserCard({
           />
         </p>
         <p className="user-city">
-          <label htmlFor="city">City</label>
+          <label htmlFor="city">
+            <strong>
+              City <span style={{ color: "red" }}>*</span>
+            </strong>
+          </label>
           <input
             type="text"
             value={editUser.city}
@@ -103,27 +110,37 @@ function UserCard({
             }}
           />
         </p>
-      </div>
+      </>
       <button
-        className="edited-user-node"
-        onClick={() => handleEditedUser(editUser)}
+        className="edited-user-done"
+        onClick={() =>
+          editUser.firstName &&
+          editUser.lastName &&
+          editUser.city &&
+          handleEditedUser(editUser)
+        }
       >
         Done
       </button>
     </div>
   ) : (
-    <div className="each__user">
+    <div className="each__user--created">
       <div className="user__header">
-        <img src={image} alt="User" width="100px" />
-      </div>
-      <div className="user__body">
-        <p>
+        <img src={UserImg} alt="User" width="100px" />
+        <p className="user--name">
           <strong>
             {firstName} {lastName}
           </strong>
         </p>
-        <p className="user-phone">Phone Number: {phoneNumber}</p>
-        <p className="user-city">City: {city}</p>
+      </div>
+      <div className="user__body">
+        <p className="user-phone">
+          <strong>Phone Number:</strong>{" "}
+          {phoneNumber ? phoneNumber : "No Phone Number!!"}
+        </p>
+        <p className="user-city">
+          <strong>City:</strong> {city}
+        </p>
       </div>
     </div>
   );

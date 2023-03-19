@@ -3,7 +3,7 @@
   padding: 0;
   box-sizing: border-box;
 }
-.user{
+.user {
   display: flex;
 }
 
@@ -16,14 +16,14 @@
   align-items: center;
   padding: 20px;
 
-  .form-title{
+  .form-title {
     text-align: center;
     font-size: 30px;
     width: 100%;
     margin-bottom: 30px;
     margin-top: 20px;
     padding: 3px;
-    border-bottom:5px solid grey;
+    border-bottom: 5px solid grey;
   }
 
   &-content {
@@ -41,7 +41,7 @@
       padding-left: 8px;
       outline-style: none;
       margin-bottom: 5px;
-      box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+      box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
       border: 2px solid #eee;
     }
     label {
@@ -70,22 +70,92 @@
     border: 1px solid black;
   }
 }
-.users__cards{
-  width: 80%;
+
+.cards__container {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  margin-left: 40px;
-  justify-content: space-between;
-  button{
-    background-color: red;
-    padding: 7px;
-    border-radius: 10px;
+  grid-template-columns: auto auto auto;
+  padding: 20px;
+  row-gap: 10px;
+  margin-top: 10px;
+}
+
+.users__cards {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+
+  h3 {
+    background-color: blue;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    letter-spacing: 0.3rem;
+    font-size: 50px;
+  }
+  .user__card--delete-edit {
+    width: 250px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    button {
+      padding: 10px 20px;
+      font-weight: 600;
+      letter-spacing: 0.07rem;
+      border-radius: 10px;
+    }
+    .user-delete {
+      background-color: red;
+      color: white;
+    }
+    .user-edit-mode {
+      background-color: orange;
+    }
   }
 }
-  
+
+.each__user--created {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .user__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    img {
+      border-radius: 50%;
+    }
+    .user--name {
+      margin-top: 10px;
+      letter-spacing: 0.1rem;
+      color: #0d00ff;
+    }
+  }
+
+  .user__body {
+    margin-top: 15px;
+    height: 50px;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+
+    .user--name {
+      text-align: center;
+    }
+  }
+}
+
 .user__card {
-  width: 300px;
-  height: 150px;
+  width: 330px;
+  height: 290px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -96,23 +166,33 @@
 }
 
 .each__user {
-  width: 280px;
+  width: 320px;
+  height: 250px;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
 
-  .user__header {
-    border-radius: 50%;
-  }
-
-  .user__body {
+  label {
+    font-size: small;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: start;
+    justify-content: center;
+    margin-top: 1px;
   }
-
-  .user-phone {
-    margin-top: 10px;
+  input {
+    margin-top: 1px;
+    outline: none;
+    border-radius: 2px;
+    border: 1px solid green;
+    padding: 2px;
+  }
+  button {
+    margin-top: 15px;
+    padding: 10px 30px;
+    border-radius: 10px;
+    background-color: green;
+    color: white;
+    font-weight: 700;
+    letter-spacing: 0.1rem;
   }
 }

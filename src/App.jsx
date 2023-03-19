@@ -143,44 +143,47 @@ function App() {
 
       <div className="users__cards">
         <h3>Created Users</h3>
-        {users.map((user, index) => {
-          return (
-            <div className="user__card">
-              <UserCard
-                key={user.firstname}
-                firstName={user.firstName}
-                lastName={user.lastName}
-                city={user.city}
-                image={user.image}
-                phoneNumber={user.phoneNumber}
-                index={index}
-                editData={user.editData}
-                user={user}
-                allUsers={users}
-                setUsers={setUsers}
-                editUser={editUser}
-                setEditUser={setEditUser}
-              />
-              <div className="user__card-delete">
-                <button
-                  className="user-delete"
-                  onClick={() => handleDeleteUser(index)}
-                >
-                  Delete User
-                </button>
-                <button
-                  className="user-edit-mode"
-                  style={{ display: user.editData && "none" }}
-                  onClick={() => {
-                    handleUserEditMode(index);
-                  }}
-                >
-                  Edit
-                </button>
+        <div className="cards__container">
+          {users.map((user, index) => {
+            return (
+              <div className="user__card">
+                <UserCard
+                  key={user.firstname}
+                  firstName={user.firstName}
+                  lastName={user.lastName}
+                  city={user.city}
+                  image={user.image}
+                  phoneNumber={user.phoneNumber}
+                  index={index}
+                  editData={user.editData}
+                  user={user}
+                  allUsers={users}
+                  setUsers={setUsers}
+                  editUser={editUser}
+                  setEditUser={setEditUser}
+                />
+                <div className="user__card--delete-edit">
+                  <button
+                    className="user-delete"
+                    style={{ display: user.editData && "none" }}
+                    onClick={() => handleDeleteUser(index)}
+                  >
+                    Delete User
+                  </button>
+                  <button
+                    className="user-edit-mode"
+                    style={{ display: user.editData && "none" }}
+                    onClick={() => {
+                      handleUserEditMode(index);
+                    }}
+                  >
+                    Edit
+                  </button>
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
     </div>
   );
