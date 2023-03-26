@@ -22,7 +22,7 @@ function Todo() {
 
   // * Todos Api Url
   const todosApiUrlNoLimit = "https://jsonplaceholder.typicode.com/todos";
-  const todosApiUrl = `https://jsonplaceholder.typicode.com/todos?_limit=50`;
+  const todosApiUrl = `https://jsonplaceholder.typicode.com/todos?_limit=20`;
 
   // * Delete Todo
   const handleDeleteTodo = (deletedTodo) => {
@@ -112,6 +112,7 @@ function Todo() {
 
   return (
     <div className="todos__container">
+      <h2>My ToDo_List</h2>
       <section className="newtodo__creator">
         <input
           type="text"
@@ -131,7 +132,7 @@ function Todo() {
         <ul className="todos__display--list">
           {apiTodos.map((todo, index) => {
             return editableTodoValue.myId === todo.id ? (
-              <div className="update__todo--constainer">
+              <div className="update__todo--container">
                 <input
                   type="text"
                   value={editableTodoValue.title}
