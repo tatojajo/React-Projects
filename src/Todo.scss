@@ -1,0 +1,142 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.todos__container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #707e63;
+
+  //   * Crete Todos Style
+
+  .newtodo__creator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    border: 5px solid #66d400;
+    border-radius: 10px;
+
+    input {
+      width: 300px;
+      height: 40px;
+      padding-left: 5px;
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+      border-style: none;
+      outline: none;
+      background-color: transparent;
+    }
+
+    button {
+      padding: 13px 30px;
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+      background-color: #66d400;
+      cursor: pointer;
+      border: none;
+      color: white;
+      font-weight: 700;
+      letter-spacing: 0.2rem;
+    }
+  }
+
+  //   * Created Todos Style
+
+  .todos__display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &--list {
+      display: flex;
+      flex-direction: column;
+      list-style: none;
+      gap: 10px;
+      margin-top: 20px;
+    }
+  }
+
+  .todo__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #c14141;
+    height: 55px;
+    border-radius: 10px;
+    padding-left: 30px;
+    padding-right: 20px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 0.03rem;
+    color: white;
+    cursor: default;
+
+    &--btns {
+      display: flex;
+      justify-content: space-between;
+      width: 150px;
+
+      button {
+        background: none;
+        padding: 5px;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+
+      .completed {
+        font-size: 2em;
+        color: #66d400;
+      }
+      .delete {
+        font-size: 2em;
+        color: rgb(171, 25, 25);
+      }
+      .edit {
+        font-size: 2em;
+        color: orange;
+      }
+    }
+  }
+
+  //   *EditMode
+
+  .update__todo--constainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #c14141;
+    height: 50px;
+    padding-left: 30px;
+    padding-right: 20px;
+
+    input {
+      width: 300px;
+      height: 35px;
+      padding-left: 5px;
+      border-radius: 10px;
+      border-style: none;
+      outline: none;
+      background-color: whitesmoke;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+    button {
+      background: none;
+      padding: 5px;
+      border-radius: 10px;
+      cursor: pointer;
+
+      .update {
+        color: green;
+        font-size: 2em;
+      }
+    }
+  }
+}
