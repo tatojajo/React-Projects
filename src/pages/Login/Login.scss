@@ -1,0 +1,30 @@
+.login__page-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  &-inpurs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    div {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      input {
+        padding: 10px;
+      }
+    }
+  }
+  &-btn {
+    margin-top: 20px;
+
+    button {
+      background-color: green;
+      padding: 10px 30px;
+    }
+  }
+}

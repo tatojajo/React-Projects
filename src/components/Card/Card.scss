@@ -1,0 +1,30 @@
+.card{
+    position: relative;
+    background-color: grey;
+    padding: 10px;
+    width: 200px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+
+    &-header{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .cart-btns{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .quantity-number{
+        position: absolute;
+        right: 0;
+        margin-right:15px;
+        background-color: orange;
+        padding: 4px;
+        border-radius: 50%;
+    }
+}
