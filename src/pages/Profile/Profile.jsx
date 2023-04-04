@@ -2,6 +2,7 @@ import React from "react";
 import jwtDecode from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 
+import { Box,Typography,Button } from "@mui/material";
 import "./Profile.scss";
 
 function Profile() {
@@ -24,32 +25,32 @@ function Profile() {
 
   return (
     <>
-    <section className="user__profile">
-      <div className="user__profile--header">
+    <Box className="user__profile">
+      <Box className="user__profile--header">
         <img src={user.image} alt="Avatar" />
         <h3>
           <strong>
             {user.firstName} {user.lastName}
           </strong>
         </h3>
-        <p>
+        <Typography>
           Email: <strong>{user.email}</strong>
-        </p>
-      </div>
-      <div className="user__profile--body">
-        <p>
+        </Typography>
+      </Box>
+      <Box className="user__profile--body">
+        <Typography>
           User Name: <span>{user.username}</span>
-        </p>
-        <p>
+        </Typography>
+        <Typography>
           Expiration Time: <span>{Date(user.exp).toString()}</span>
-        </p>
-        <div className="user__profile--btns">
-          <button onClick={handleHomePage}>Back Home</button>
-          <button onClick={handleCartPage}>Cart</button>
-          <button onClick={handleLogout}>Log Out</button>
-        </div>
-      </div>
-    </section>
+        </Typography>
+        <Box className="user__profile--btns">
+          <Button variant='contained' onClick={handleHomePage}>Back Home</Button>
+          <Button variant="contained" onClick={handleCartPage}>Cart</Button>
+          <Button variant="contained" onClick={handleLogout}>Log Out</Button>
+        </Box>
+      </Box>
+    </Box>
   </>
   );
 }

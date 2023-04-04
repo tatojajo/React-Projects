@@ -1,7 +1,11 @@
 import React from "react";
 import { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
+
+
 import "./Card.scss";
+
+import { Badge, Typography, Button,Card,CardMedia, CardContent, CardActions} from "@mui/material";
 
 export const CartItems = ({ product, chosenProducts, setChosenProducts }) => {
   const [quantity, setQuantity] = useState(product.quantity);
@@ -35,86 +39,85 @@ export const CartItems = ({ product, chosenProducts, setChosenProducts }) => {
   };
 
   return (
-    <section className="card">
-      <span className="quantity-number">{product.quantity}</span>
-      <div className="card-header">
+    <Card className="card">
+      <Badge className="quantity-number">{product.quantity}</Badge>
+      <CardMedia className="card-header">
         <img src={product?.images?.[0]} width="50px" height="100px" alt="" />
-        <p>
+        <Typography>
           <Link to={`/product/${product.id}`}>
             <strong>{product.title}</strong>
           </Link>
-        </p>
-        <button
+        </Typography>
+        <Button variant='outlined' color="error"
           onClick={() => handleRemoveItem(product)}
           style={{ color: "red" }}
         >
           Remove
-        </button>
-      </div>
-      <div className="card-body">
-        <p>
+        </Button>
+      </CardMedia>
+      <CardMedia className="card-body">
+        <Typography>
           Brend: <strong>{product.brand}</strong>
-        </p>
-        <p>
+        </Typography>
+        <Typography>
           category: <strong>{product.category}</strong>
-        </p>
-      </div>
-      <div className="cart-btns">
-        <button
-          onClick={() => {
+        </Typography>
+      </CardMedia>
+      <CardActions className="cart-btns">
+        <Button variant="outlined" color='secondary'          onClick={() => {
             handleQuantityDown(product);
           }}
         >
           -
-        </button>
-        <p>Quantity</p>
-        <button
+        </Button>
+        <Typography>Quantity</Typography>
+        <Button variant="outlined" color="secondary"
           onClick={() => {
             handleQuantityUp(product);
           }}
         >
           +
-        </button>
-      </div>
-    </section>
+        </Button>
+      </CardActions>
+    </Card>
   );
 };
 
-function Card({ product, handleDeleteProduct, handleChosenProduct }) {
+function ProductCard({ product, handleDeleteProduct, handleChosenProduct }) {
   return (
-    <section className="card">
-      <div className="card-header">
+    <Card className="card">
+      <CardMedia className="card-header">
         <img src={product.images[0]} width="50px" height="100px" alt="" />
-        <p>
+        <Typography>
           <Link to={`/product/${product.id}`}>
             <strong>{product.title}</strong>
           </Link>
-        </p>
-        <button
-          style={{ color: "red" }}
+        </Typography>
+        <Button variant="contained" color="error"
+          
           onClick={() => {
             handleDeleteProduct(product.id);
           }}
         >
           Delete
-        </button>
-      </div>
-      <div className="card-body">
-        <p>
+        </Button>
+      </CardMedia>
+      <CardContent className="card-body">
+        <Typography>
           Brend: <strong>{product.brand}</strong>
-        </p>
-        <p>
+        </Typography>
+        <Typography>
           category: <strong>{product.category}</strong>
-        </p>
-      </div>
-      <div className="card-btns">
-        <button onClick={() => handleChosenProduct(product)}>
+        </Typography>
+      </CardContent>
+      <CardActions className="card-btns">
+        <Button variant="contained" color='success' onClick={() => handleChosenProduct(product)}>
           Add To Cart
-        </button>
-        <button>Edit Product</button>
-      </div>
-    </section>
+        </Button>
+        <Button variant='contained' color='info' >Edit Product</Button>
+      </CardActions>
+    </Card>
   );
 }
 
-export default Card;
+export default ProductCard;

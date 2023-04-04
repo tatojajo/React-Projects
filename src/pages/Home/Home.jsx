@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import "./Home.scss";
 
-import Card from "../../components/Card";
+import ProductCard from "../../components/Card";
 
 function Home({
   handleChosenProduct,
@@ -40,7 +40,7 @@ function Home({
     <div className="prouct__card--wrapper">
       {searchResult.map((product) => {
         return (
-          <Card
+          <ProductCard
             product={product}
             key={product.id}
             chosenProducts={chosenProducts}
@@ -56,7 +56,7 @@ function Home({
       <div className="prouct__card--wrapper">
         {products.map((product) => {
           return (
-            <Card
+            <ProductCard
               product={product}
               key={product.id}
               chosenProducts={chosenProducts}

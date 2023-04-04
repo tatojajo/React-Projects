@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import jwtDecode from "jwt-decode";
 import axios from "axios";
+
+import { AppBar, Typography, Button,Box,Toolbar, List, ListItem, ListItemText,TextField, FormControl} from "@mui/material";
+
 import "./NavBar.scss";
 
 function NavBar({ chosenProducts, setSearchResult }) {
@@ -30,51 +33,51 @@ function NavBar({ chosenProducts, setSearchResult }) {
   const user = jwtDecode(userToken);
 
   return (
-    <header className="navigation">
-      <nav className="navbar">
-        <ul className=" navbar-list">
-          <div>
-            <li>
+    <AppBar className="navigation" position="static">
+      <Toolbar className="navbar">
+        <List className=" navbar-list">
+          <Box>
+            <ListItem>
               <Link to="/">Home</Link>
-            </li>
-          </div>
-          <div>
+            </ListItem>
+          </Box>
+          <Box>
             <form onSubmit={(e) => handleSearchReuslts(e, searchInput)}>
-              <input
+              <TextField
                 type="search"
                 placeholder="Search..."
                 value={searchInput}
                 onChange={(e) => setSearchInput(e.target.value)}
               />
-              <button>Search</button>
+              <Button variant="contained" color='warning'>Search</Button>
             </form>
-          </div>
-          <div className="cart-login">
-            <li>
+          </Box>
+          <Box className="cart-login">
+            <ListItem>
               <Link to="/cart">
                 Cart{" "}
-                <span
+                <ListItemText
                   style={{
                     color: chosenProducts.length === 0 && "red",
                   }}
                 >
                   {chosenProducts.length}
-                </span>
+                </ListItemText>
               </Link>
-            </li>
-            <li>
+            </ListItem>
+            <ListItem>
               <Link to={"/profile"}>
                 <img src={user.image} width="40px" alt="UserAvatar" />{" "}
                 {user.firstName}
               </Link>
-            </li>
-            <li>
-              <button onClick={handleLogout}>Log Out</button>
-            </li>
-          </div>
-        </ul>
-      </nav>
-    </header>
+            </ListItem>
+            <List>
+              <Button variant="contained" color="error" onClick={handleLogout}>Log Out</Button>
+            </List>
+          </Box>
+        </List>
+      </Toolbar>
+    </AppBar>
   );
 }
 

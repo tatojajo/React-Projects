@@ -1,9 +1,10 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, Form } from "react-router-dom";
 import axios from "axios";
 
 import "./Product.scss";
+import { Box,Typography, FormControl, FormLabel, Button } from "@mui/material";
 
 function Product({ handleChosenProduct }) {
   const [product, setProduct] = useState({});
@@ -20,36 +21,36 @@ function Product({ handleChosenProduct }) {
   }, [id]);
   console.log(id);
   return (
-    <div className="product__container">
+    <Box className="product__container">
       <Link to={"/"}>
         <small>Back</small>
       </Link>
-      <div className="product__container-header">
+      <Box className="product__container-header">
         <h2>{product.brand}</h2>
         <img src={product?.images?.[0]} alt="Avatar" />
-        <fieldset>
-          <legend>Model</legend>
-          <p className="description">
+        <FormControl>
+          <FormLabel>Model</FormLabel>
+          <Typography className="description">
             <strong>{product.title}</strong>
-          </p>
-        </fieldset>
-      </div>
-      <div className="product__container-info">
-        <fieldset>
-          <legend>Category</legend>
-          <p className="description">
+          </Typography>
+        </FormControl>
+      </Box>
+      <Box className="product__container-info">
+        <FormControl>
+          <FormLabel>Category</FormLabel>
+          <Typography className="description">
             <strong>{product.category}</strong>
-          </p>
-        </fieldset>
-        <fieldset>
-          <legend>Description</legend>
-          <p className="description">
+          </Typography>
+        </FormControl>
+        <FormControl>
+          <FormLabel>Description</FormLabel>
+          <Typography className="description">
             <strong>{product.description}</strong>
-          </p>
-        </fieldset>
-      </div>
-      <button onClick={() => handleChosenProduct(product)}>Add To Cart</button>
-    </div>
+          </Typography>
+        </FormControl>
+      </Box>
+      <Button variant="contained" color='success' onClick={() => handleChosenProduct(product)}>Add To Cart</Button>
+    </Box>
   );
 }
 

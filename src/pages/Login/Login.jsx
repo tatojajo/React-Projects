@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./Login.scss";
 
+import { Box, InputLabel, Input, FormLabel, Button } from "@mui/material";
 
 function Login() {
   const [user, setUser] = useState({
@@ -33,11 +34,11 @@ function Login() {
   };
 
   return (
-    <section className="login__page-container">
-      <div className="login__page-container-inpurs">
-        <div>
-          <label htmlFor="usename">User Name</label>
-          <input
+    <Box className="login__page-container">
+      <Box className="login__page-container-inpurs">
+        <Box>
+          <InputLabel htmlFor="usename">User Name</InputLabel>
+          <Input
             type="text"
             name="username"
             id="username"
@@ -45,10 +46,10 @@ function Login() {
             value={user.username}
             onChange={handleInputValues}
           />
-        </div>
-        <div>
-          <label htmlFor="password">Password</label>
-          <input
+        </Box>
+        <Box>
+          <InputLabel htmlFor="password">Password</InputLabel>
+          <Input
             type="password"
             name="password"
             id="password"
@@ -56,12 +57,12 @@ function Login() {
             value={user.password}
             onChange={handleInputValues}
           />
-        </div>
-      </div>
-      <div className="login__page-container-btn">
-        <button onClick={handleLogin}>Log In</button>
-      </div>
-    </section>
+        </Box>
+      </Box>
+      <Box className="login__page-container-btn">
+        <Button onClick={handleLogin}>Log In</Button>
+      </Box>
+    </Box>
   );
 }
 
