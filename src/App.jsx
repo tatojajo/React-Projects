@@ -11,7 +11,8 @@ import Profile from "./pages/Profile";
 import { isAutenticated } from "./helpers/autentication";
 
 
-const RoutesBeforeLogin = ()=>{
+const RoutesAfterLogin = ()=>{
+  const [searchResult, setSearchResult] = useState([])
   const [chosenProducts, setChosenProducts] = useState([]);
   // * Handle ChosenProduct
 
@@ -26,11 +27,11 @@ const RoutesBeforeLogin = ()=>{
   };
   return (
     <>
-      <Navigation chosenProducts={chosenProducts} />
+      <Navigation chosenProducts={chosenProducts} setSearchResult={setSearchResult}/>
       <Routes>
         <Route
           path="/"
-          element={<Home handleChosenProduct={handleChosenProduct} />}
+          element={<Home handleChosenProduct={handleChosenProduct} searchResult={searchResult} />}
         />
         <Route
           path="/cart"
@@ -58,7 +59,7 @@ if(!isAutenticated()) navigation('/login')
   return (
     <>
       <Routes>
-        <Route path="/*" element={<RoutesBeforeLogin/>}/>
+        <Route path="/*" element={<RoutesAfterLogin/>}/>
         <Route path="/profile" element={<Profile/>}/>
         <Route path="/login" element={<Login/>}/>
       </Routes>

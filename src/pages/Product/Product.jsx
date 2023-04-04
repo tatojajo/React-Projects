@@ -5,15 +5,18 @@ import axios from "axios";
 
 import "./Product.scss";
 
-function Product({ handleChosenProduct}) {
+function Product({ handleChosenProduct }) {
   const [product, setProduct] = useState({});
   const { id } = useParams();
   console.log(product);
 
   useEffect(() => {
-    axios.get(`https://dummyjson.com/products/${id}`).then((data) => {
-      setProduct(data.data);
-    });
+    const productDetails = async () => {
+      const { data } = await axios.get(`https://dummyjson.com/products/${id}`);
+      console.log(data);
+      setProduct(data);
+    };
+    productDetails();
   }, [id]);
   console.log(id);
   return (
@@ -45,7 +48,7 @@ function Product({ handleChosenProduct}) {
           </p>
         </fieldset>
       </div>
-      <button onClick={()=>handleChosenProduct(product)}>Add To Cart</button>
+      <button onClick={() => handleChosenProduct(product)}>Add To Cart</button>
     </div>
   );
 }

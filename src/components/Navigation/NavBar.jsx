@@ -1,16 +1,31 @@
 import React, { useState } from "react";
-import "./NavBar.scss";
 import { Link, useNavigate } from "react-router-dom";
 import jwtDecode from "jwt-decode";
+import axios from "axios";
+import "./NavBar.scss";
 
-function NavBar({ chosenProducts }) {
+function NavBar({ chosenProducts, setSearchResult }) {
+  const [searchInput, setSearchInput] = useState("");
   const navigate = useNavigate();
 
+  // *handleSearchResults
+  const handleSearchReuslts = async (e, value) => {
+    e.preventDefault();
+    const searchEndpoint = await axios(
+      `https://dummyjson.com/products/search?q=${value}`
+    );
+    const {
+      data: { products },
+    } = searchEndpoint;
+    setSearchResult(products);
+  };
+
+  // * Logout
   const handleLogout = () => {
     localStorage.removeItem("token");
     navigate("/login");
   };
-
+  // * Decode Token
   const userToken = localStorage.getItem("token");
   const user = jwtDecode(userToken);
 
@@ -22,6 +37,17 @@ function NavBar({ chosenProducts }) {
             <li>
               <Link to="/">Home</Link>
             </li>
+          </div>
+          <div>
+            <form onSubmit={(e) => handleSearchReuslts(e, searchInput)}>
+              <input
+                type="search"
+                placeholder="Search..."
+                value={searchInput}
+                onChange={(e) => setSearchInput(e.target.value)}
+              />
+              <button>Search</button>
+            </form>
           </div>
           <div className="cart-login">
             <li>
