@@ -4,13 +4,10 @@ import axios from "axios";
 import "./Home.scss";
 
 import ProductCard from "../../components/Card";
+import { useStore } from "../../store/StoreContext";
 
-function Home({
-  handleChosenProduct,
-  chosenProducts,
-  setChosenProduct,
-  searchResult,
-}) {
+function Home() {
+  const { setChosenProduct, searchResult } = useStore();
   const [products, setProducts] = useState([]);
 
   // * Delete Item
@@ -43,10 +40,7 @@ function Home({
           <ProductCard
             product={product}
             key={product.id}
-            chosenProducts={chosenProducts}
             setChosenProduct={setChosenProduct}
-            handleDeleteProduct={handleDeleteProduct}
-            handleChosenProduct={handleChosenProduct}
           />
         );
       })}
@@ -59,10 +53,7 @@ function Home({
             <ProductCard
               product={product}
               key={product.id}
-              chosenProducts={chosenProducts}
-              setChosenProduct={setChosenProduct}
               handleDeleteProduct={handleDeleteProduct}
-              handleChosenProduct={handleChosenProduct}
             />
           );
         })}

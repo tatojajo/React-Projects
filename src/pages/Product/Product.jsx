@@ -5,8 +5,10 @@ import axios from "axios";
 
 import "./Product.scss";
 import { Box,Typography, FormControl, FormLabel, Button } from "@mui/material";
+import { useStore } from "../../store/StoreContext";
 
-function Product({ handleChosenProduct }) {
+function Product() {
+  const {handleChosenProduct} = useStore()
   const [product, setProduct] = useState({});
   const { id } = useParams();
   console.log(product);

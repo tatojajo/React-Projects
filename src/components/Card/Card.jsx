@@ -6,8 +6,10 @@ import { Link } from "react-router-dom";
 import "./Card.scss";
 
 import { Badge, Typography, Button,Card,CardMedia, CardContent, CardActions} from "@mui/material";
+import { useStore } from "../../store/StoreContext";
 
-export const CartItems = ({ product, chosenProducts, setChosenProducts }) => {
+export const CartItems = ({ product }) => {
+  const {chosenProducts, setChosenProducts}= useStore()
   const [quantity, setQuantity] = useState(product.quantity);
 
   // * Product Quantity Up
@@ -83,7 +85,8 @@ export const CartItems = ({ product, chosenProducts, setChosenProducts }) => {
   );
 };
 
-function ProductCard({ product, handleDeleteProduct, handleChosenProduct }) {
+function ProductCard({ product, handleDeleteProduct }) {
+  const {handleChosenProduct} = useStore()
   return (
     <Card className="card">
       <CardMedia className="card-header">

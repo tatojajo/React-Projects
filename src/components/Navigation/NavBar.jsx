@@ -6,8 +6,10 @@ import axios from "axios";
 import { AppBar, Typography, Button,Box,Toolbar, List, ListItem, ListItemText,TextField, FormControl} from "@mui/material";
 
 import "./NavBar.scss";
+import { useStore } from "../../store/StoreContext";
 
-function NavBar({ chosenProducts, setSearchResult }) {
+function NavBar() {
+  const {chosenProducts,setSearchResult} = useStore()
   const [searchInput, setSearchInput] = useState("");
   const navigate = useNavigate();
 

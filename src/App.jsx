@@ -2,6 +2,7 @@ import React from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { useEffect, useState, useMemo } from "react";
 
+
 import Navigation from "./components/Navigation";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
@@ -9,37 +10,28 @@ import Cart from "./pages/Cart";
 import Product from "./pages/Product";
 import Profile from "./pages/Profile";
 import { isAutenticated } from "./helpers/autentication";
+import { useStore } from "./store/StoreContext";
+
 
 
 const RoutesAfterLogin = ()=>{
-  const [searchResult, setSearchResult] = useState([])
-  const [chosenProducts, setChosenProducts] = useState([]);
-  // * Handle ChosenProduct
+const {} = useStore()
 
-  const handleChosenProduct = (product) => {
-    setChosenProducts((prev) => {
-      const indexOfProduct = prev.findIndex((item) => item.id === product.id);
-      if (indexOfProduct === -1) {
-        return [...prev, { ...product, quantity: 1 }]};
-      
-      return prev;
-    });
-  };
   return (
     <>
-      <Navigation chosenProducts={chosenProducts} setSearchResult={setSearchResult}/>
+      <Navigation />
       <Routes>
         <Route
           path="/"
-          element={<Home handleChosenProduct={handleChosenProduct} searchResult={searchResult} />}
+          element={<Home />}
         />
         <Route
           path="/cart"
-          element={<Cart chosenProducts={chosenProducts} setChosenProducts={setChosenProducts} />}
+          element={<Cart />}
         />
         <Route
           path="/product/:id"
-          element={<Product handleChosenProduct={handleChosenProduct} />}
+          element={<Product />}
         />
       </Routes>
     </>
