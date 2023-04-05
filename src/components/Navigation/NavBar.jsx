@@ -3,13 +3,24 @@ import { Link, useNavigate } from "react-router-dom";
 import jwtDecode from "jwt-decode";
 import axios from "axios";
 
-import { AppBar, Typography, Button,Box,Toolbar, List, ListItem, ListItemText,TextField, FormControl} from "@mui/material";
+import {
+  AppBar,
+  Typography,
+  Button,
+  Box,
+  Toolbar,
+  List,
+  ListItem,
+  ListItemText,
+  TextField,
+  FormControl,
+} from "@mui/material";
 
 import "./NavBar.scss";
 import { useStore } from "../../store/StoreContext";
 
 function NavBar() {
-  const {chosenProducts,setSearchResult} = useStore()
+  const { chosenProducts, setSearchResult, handleThemeMode } = useStore();
   const [searchInput, setSearchInput] = useState("");
   const navigate = useNavigate();
 
@@ -51,7 +62,9 @@ function NavBar() {
                 value={searchInput}
                 onChange={(e) => setSearchInput(e.target.value)}
               />
-              <Button variant="contained" color='warning'>Search</Button>
+              <Button variant="contained" color="warning">
+                Search
+              </Button>
             </form>
           </Box>
           <Box className="cart-login">
@@ -74,7 +87,14 @@ function NavBar() {
               </Link>
             </ListItem>
             <List>
-              <Button variant="contained" color="error" onClick={handleLogout}>Log Out</Button>
+              <Button variant="contained" color="error" onClick={handleLogout}>
+                Log Out
+              </Button>
+            </List>
+            <List>
+              <Button color="secondary" variant="contained" onClick={handleThemeMode}>
+                theme
+              </Button>
             </List>
           </Box>
         </List>

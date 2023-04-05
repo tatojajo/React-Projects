@@ -15,7 +15,6 @@ import { useStore } from "./store/StoreContext";
 
 
 const RoutesAfterLogin = ()=>{
-const {} = useStore()
 
   return (
     <>

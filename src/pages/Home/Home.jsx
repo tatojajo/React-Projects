@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import "./Home.scss";
-
+import { Grid } from "@mui/material";
 import ProductCard from "../../components/Card";
 import { useStore } from "../../store/StoreContext";
 
@@ -34,7 +34,7 @@ function Home() {
     getProducts();
   }, []);
   return searchResult.length > 0 ? (
-    <div className="prouct__card--wrapper">
+    <Grid className="prouct__card--wrapper">
       {searchResult.map((product) => {
         return (
           <ProductCard
@@ -44,10 +44,10 @@ function Home() {
           />
         );
       })}
-    </div>
+    </Grid>
   ) : (
     <>
-      <div className="prouct__card--wrapper">
+      <Grid className="prouct__card--wrapper">
         {products.map((product) => {
           return (
             <ProductCard
@@ -57,7 +57,7 @@ function Home() {
             />
           );
         })}
-      </div>
+      </Grid>
     </>
   );
 }
