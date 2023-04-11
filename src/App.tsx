@@ -8,11 +8,13 @@ import {
   ListItem,
   Typography,
   ButtonGroup,
-  AppBar,
 } from "@mui/material";
 
-import './App.scss'
+import DeleteIcon from "@mui/icons-material/Delete";
+import Edit from "@mui/icons-material/Edit";
+import DoneAllIcon from "@mui/icons-material/DoneAll";
 
+import "./App.scss";
 
 type TodoObject = {
   id: number;
@@ -21,16 +23,16 @@ type TodoObject = {
   completed: boolean;
 };
 
-type EditInput ={
-  todo: string,
-  id: string | number
-}
+type EditInput = {
+  todo: string;
+  id: string | number;
+};
 
 type MyComponentState = {
-  inputValue: string,
-  todoList: TodoObject[],
+  inputValue: string;
+  todoList: TodoObject[];
   editInputValue: EditInput;
-}
+};
 
 class ToDoList extends React.Component<{}, MyComponentState> {
   constructor(props: object) {
@@ -39,7 +41,7 @@ class ToDoList extends React.Component<{}, MyComponentState> {
       inputValue: "",
       todoList: [],
       editInputValue: {
-        id: '',
+        id: "",
         todo: "",
       },
     };
@@ -129,7 +131,7 @@ class ToDoList extends React.Component<{}, MyComponentState> {
     });
   };
 
-  onEditDone = async (id: number, editInputValue:EditInput) => {
+  onEditDone = async (id: number, editInputValue: EditInput) => {
     const editedTodo = { todo: editInputValue.todo, id: editInputValue.id };
     const { data } = await axios.put(`https://dummyjson.com/todos/${id}`, {
       editedTodo,
@@ -151,7 +153,7 @@ class ToDoList extends React.Component<{}, MyComponentState> {
   render(): React.ReactNode {
     const { inputValue, todoList, editInputValue } = this.state;
     return (
-      <Box className='main_container'>
+      <Box className="main_container">
         <Box>
           <TextField
             id="item"
@@ -168,7 +170,7 @@ class ToDoList extends React.Component<{}, MyComponentState> {
           </Button>
         </Box>
         <Box>
-          <List>
+          <List className="todo__item">
             {todoList.map((todo: TodoObject) => {
               return this.state.editInputValue.id === todo.id ? (
                 <Box position="static" key={todo.todo}>
@@ -198,7 +200,7 @@ class ToDoList extends React.Component<{}, MyComponentState> {
                 <ListItem key={todo.id}>
                   <Typography
                     style={{
-                      textDecoration: todo.completed ? "line-through" : 'none',
+                      textDecoration: todo.completed ? "line-through" : "none",
                     }}
                     variant="h6"
                     color="initial"
@@ -211,14 +213,14 @@ class ToDoList extends React.Component<{}, MyComponentState> {
                       color="error"
                       onClick={() => this.onDeleteRequest(todo.id)}
                     >
-                      Delete
+                      <DeleteIcon />
                     </Button>
                     <Button
                       variant="outlined"
                       color="success"
                       onClick={() => this.coompletedTodos(todo.id)}
                     >
-                      Done
+                      <DoneAllIcon />
                     </Button>
                     <Button
                       variant="contained"
@@ -227,7 +229,7 @@ class ToDoList extends React.Component<{}, MyComponentState> {
                         return this.editMode(todo);
                       }}
                     >
-                      Edit
+                      <Edit />
                     </Button>
                   </ButtonGroup>
                 </ListItem>
